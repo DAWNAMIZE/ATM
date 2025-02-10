@@ -185,9 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d633e977373460a4c94ef7d937307b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginPanel: {fileID: 0}
-  signupPanel: {fileID: 0}
-  profilePanel: {fileID: 0}
+  loginPanel: {fileID: 1587031035}
+  signupPanel: {fileID: 652016413}
+  profilePanel: {fileID: 1587031035}
   loginEmail: {fileID: 0}
   loginPassword: {fileID: 0}
   signupEmail: {fileID: 0}
@@ -8364,7 +8364,7 @@ GameObject:
   - component: {fileID: 1688972047}
   - component: {fileID: 1688972046}
   m_Layer: 5
-  m_Name: InputField (TMP) (1)
+  m_Name: PaasswordField (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
