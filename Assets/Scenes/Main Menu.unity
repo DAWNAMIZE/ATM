@@ -193,6 +193,7 @@ MonoBehaviour:
   signupEmail: {fileID: 0}
   signupPassword: {fileID: 0}
   signupConfirmPassword: {fileID: 0}
+  signupUserName: {fileID: 0}
 --- !u!4 &13712036
 Transform:
   m_ObjectHideFlags: 0
@@ -7860,8 +7861,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 652016414}
   - {fileID: 1587031036}
+  - {fileID: 652016414}
   - {fileID: 2139461387}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
