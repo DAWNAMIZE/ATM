@@ -13,6 +13,7 @@ public class FirebaseController : MonoBehaviour
 
     public void OpenLoginPanel()
     {
+        Debug.Log("LoginPanel");
         loginPanel.SetActive(true);
         signupPanel.SetActive(false);
         profilePanel.SetActive(false);
@@ -20,6 +21,7 @@ public class FirebaseController : MonoBehaviour
 
     public void OpenSignUpPanel()
     {
+        Debug.Log("SignUp");
         loginPanel.SetActive(false);
         signupPanel.SetActive(true);
         profilePanel.SetActive(false);
@@ -27,7 +29,7 @@ public class FirebaseController : MonoBehaviour
 
     public void OpenProfilePanel()
     {
-        Debug.Log("oijoijoip");
+        Debug.Log("profileButton");
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
         profilePanel.SetActive(true);
