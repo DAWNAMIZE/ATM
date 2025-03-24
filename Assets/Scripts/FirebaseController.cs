@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FirebaseController : MonoBehaviour
 {
-    public GameObject loginPanel, signupPanel, profilePanel, BankTransfer;
+    public GameObject loginPanel, signupPanel, profilePanel, BankTransfer, Welcome;
 
     public InputField loginEmail, loginPassword, signupEmail, signupPassword, signupConfirmPassword, signupUserName;
     
@@ -18,6 +18,16 @@ public class FirebaseController : MonoBehaviour
         signupPanel.SetActive(false);
         profilePanel.SetActive(false);
         BankTransfer.SetActive(false);
+        Welcome.SetActive(false);
+    }
+    public void OpenWelcome()
+    {
+        Debug.Log("Welcome");
+        loginPanel.SetActive(false);
+        signupPanel.SetActive(false);
+        profilePanel.SetActive(false);
+        BankTransfer.SetActive(false);
+        Welcome.SetActive(true);
     }
 
     public void OpenBankTransfer()
@@ -27,6 +37,7 @@ public class FirebaseController : MonoBehaviour
         signupPanel.SetActive(false);
         profilePanel.SetActive(false);
         BankTransfer.SetActive(true);
+        Welcome.SetActive(false);
     }
 
     public void OpenSignUpPanel()
@@ -36,6 +47,7 @@ public class FirebaseController : MonoBehaviour
         signupPanel.SetActive(true);
         profilePanel.SetActive(false);
         BankTransfer.SetActive(false);
+        Welcome.SetActive(false);
     }
 
     public void OpenProfilePanel()
@@ -45,6 +57,7 @@ public class FirebaseController : MonoBehaviour
         signupPanel.SetActive(false);
         profilePanel.SetActive(true);
         BankTransfer.SetActive(false);
+        Welcome.SetActive(false);
     }
 
     public void LoginUser()
