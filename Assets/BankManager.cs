@@ -7,7 +7,8 @@ using static TMPro.TextMeshPro;
 public class BankManager : MonoBehaviour
 {
     private const string AccountBalanceKeyPrefix = "AccountBalance_User";
-    private int currentUserId = 1; // Default to user 1, you'll need to set this based on your user selection logic
+    private const string UserNameKeyPrefix = "UserName_User";
+    private int currentUserId = 1; // Default to user 1
 
     private float GetCurrentBalance()
     {
@@ -21,32 +22,56 @@ public class BankManager : MonoBehaviour
         UpdateBalanceUI();
     }
 
+    private string GetCurrentUserName()
+    {
+        return PlayerPrefs.GetString(UserNameKeyPrefix + currentUserId, GetDefaultUserName(currentUserId)); // Provide a default name if not set
+    }
+
+    private void SetCurrentUserName(string newName)
+    {
+        PlayerPrefs.SetString(UserNameKeyPrefix + currentUserId, newName);
+        PlayerPrefs.Save();
+        UpdateUserProfileUI(); // Update the profile UI when the name changes
+    }
+
+    private string GetDefaultUserName(int userId)
+    {
+        if (userId == 1) return "User One";
+        if (userId == 2) return "User Two";
+        return "Unknown User";
+    }
+
     public TextMeshProUGUI balanceText;
+    public TextMeshProUGUI userNameText; // Reference to the UI Text for displaying the user's name
 
     void Start()
     {
+        LoadUserProfile(); // Load user details at start
         LoadBalance();
         UpdateBalanceUI();
+        UpdateUserProfileUI();
     }
 
     public void SetCurrentUser(int userId)
     {
         currentUserId = userId;
+        LoadUserProfile(); // Load user details when switching user
         LoadBalance();
         UpdateBalanceUI();
+        UpdateUserProfileUI();
     }
 
-    public void SaveBalance() // Modified to use current user
+    public void SaveBalance()
     {
         SetCurrentBalance(GetCurrentBalance());
     }
 
-    public float GetBalance() // Modified to use current user
+    public float GetBalance()
     {
         return GetCurrentBalance();
     }
 
-    private void LoadBalance() // Modified to use current user
+    private void LoadBalance()
     {
         UpdateBalanceUI();
     }
@@ -55,15 +80,29 @@ public class BankManager : MonoBehaviour
     {
         if (balanceText != null)
         {
-            balanceText.text = $"₦{GetCurrentBalance():N2}"; // Format as currency
+            balanceText.text = $"₦{GetCurrentBalance():N2}";
         }
         Debug.Log($"User {currentUserId} Balance: {GetCurrentBalance()}");
     }
 
-    public TMP_InputField depositInputField; // Link this in the Inspector
-    public TMP_InputField withdrawInputField; // Link this in the Inspector
-    public TMP_InputField transferToInputField; // Link this in the Inspector for the recipient user ID
-    public TMP_InputField transferAmountInputField; // Link this in the Inspector for the transfer amount
+    private void LoadUserProfile()
+    {
+        UpdateUserProfileUI();
+    }
+
+    private void UpdateUserProfileUI()
+    {
+        if (userNameText != null)
+        {
+            userNameText.text = GetCurrentUserName();
+        }
+        Debug.Log($"User {currentUserId} Name: {GetCurrentUserName()}");
+    }
+
+    public TMP_InputField depositInputField;
+    public TMP_InputField withdrawInputField;
+    public TMP_InputField transferToInputField;
+    public TMP_InputField transferAmountInputField;
 
     public void DepositButtonClicked()
     {
