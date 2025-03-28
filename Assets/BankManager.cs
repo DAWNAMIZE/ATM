@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Transactions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -103,6 +105,8 @@ public class BankManager : MonoBehaviour
     public TMP_InputField withdrawInputField;
     public TMP_InputField transferToInputField;
     public TMP_InputField transferAmountInputField;
+    private List<Transaction> transactionHistory = new List<Transaction>();
+    private const string TransactionHistoryKey = "TransactionHistory_"; // Append account key
 
     public void DepositButtonClicked()
     {
@@ -123,6 +127,7 @@ public class BankManager : MonoBehaviour
         {
             float currentBalance = GetCurrentBalance();
             currentBalance += amount;
+
             SetCurrentBalance(currentBalance); // This will save and update the UI
         }
         else
