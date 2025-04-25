@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FirebaseController : MonoBehaviour
 {
-    public GameObject loginPanel, signupPanel, profilePanel, BankTransfer, Welcome, TransactionHistory;
+    public GameObject loginPanel, signupPanel, profilePanel, BankTransfer, Welcome, TransactionHistory, ExpenseMonitor;
 
     public InputField loginEmail, loginPassword, signupEmail, signupPassword, signupConfirmPassword, signupUserName;
     
@@ -20,7 +20,18 @@ public class FirebaseController : MonoBehaviour
         BankTransfer.SetActive(false);
         Welcome.SetActive(false);
     }
-     
+
+    public void OpenExpenseMonitor()
+    {
+        Debug.Log("ExpenseMonitor");
+        loginPanel.SetActive(false);
+        ExpenseMonitor.SetActive(true);
+        signupPanel.SetActive(false);
+        profilePanel.SetActive(false);
+        BankTransfer.SetActive(false);
+        Welcome.SetActive(false);
+    }
+
     public void OpenTransactionHistory()
     {
         Debug.Log("TransactionHistory");
